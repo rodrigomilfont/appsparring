@@ -4,11 +4,11 @@ import './App.css';
 import Home from './Home';
 
 const App = () => (
-  <div className="App">
-    <Switch>
-      <Route exact path="/" component={Home} />
-    </Switch>
-  </div>
+	<div className="App">
+		<Switch>
+			<Route exact path="/" component={Home} />
+		</Switch>
+	</div>
 );
 
 export default App;

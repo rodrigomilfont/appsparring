@@ -8,20 +8,20 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const renderApp = () => {
-  render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
-    document.getElementById('root'),
-  );
+	render(
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>,
+		document.getElementById('root')
+	);
 };
 
 renderApp();
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    renderApp();
-  });
+	module.hot.accept('./App', () => {
+		renderApp();
+	});
 }
 
 registerServiceWorker();
