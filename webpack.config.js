@@ -1,21 +1,26 @@
 const path = require('path');
+const webpack = require('webpack');
 
-module.exports = {
-  entry: './src/index.js',
-
-  output: {
-    path: path.resolve('dist'),
-    filename: 'bundle.js',
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-      },
-    ],
-  },
+module.exports = () => {
+  return {
+    entry: './src/index.js',
+    output: {
+      path: path.resolve('dist'),
+      filename: 'bundle.js',
+    },
+    devtool: 'source-map',
+    // devServer: {
+    //   publicPath: './dist',
+    // },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+        },
+      ],
+    },
+  };
 };
 
 // const path = require('path');
