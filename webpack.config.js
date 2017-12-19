@@ -1,24 +1,54 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = () => {
+  console.log('__dirname: ', __dirname);
+  console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
   return {
-    entry: './src/index.js',
+    context: __dirname,
+    // entry: [
+    // 'react-hot-loader/patch',
+    // 'webpack-dev-server/client?http://localhost:8080',
+    // 'webpack/hot/only-dev-server',
+    // './src/index.js',
+    // ],
+    entry: { app: './src/index.js' },
     output: {
-      path: path.resolve('dist'),
-      filename: 'bundle.js',
+      filename: '[name].bundle.[hash].js',
+      // filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Output Updated',
+        template: 'index.html',
+      }),
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+    ],
     devtool: 'source-map',
-    // devServer: {
-    //   publicPath: './dist',
-    // },
+    // devtool: 'cheap-eval-source-map',
+    devServer: {
+      hot: true,
+      // publicPath: path.resolve('./dist'),
+      historyApiFallback: true,
+    },
     module: {
       rules: [
         {
           test: /\.js$/,
           loader: 'babel-loader',
+          exclude: /node_modules/,
         },
       ],
+    },
+    stats: {
+      colors: true,
+      reasons: true,
+      chunks: true,
     },
   };
 };
