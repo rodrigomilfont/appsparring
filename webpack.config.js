@@ -14,11 +14,11 @@ module.exports = () => {
     // 'webpack/hot/only-dev-server',
     // './src/index.js',
     // ],
-    entry: { app: './src/index.js' },
+    entry: { app: './src/index.jsx' },
     output: {
       filename: '[name].bundle.[hash].js',
-      // filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      // filename: 'bundle.js',
     },
     plugins: [
       new CleanWebpackPlugin(['dist']),
@@ -36,10 +36,19 @@ module.exports = () => {
       // publicPath: path.resolve('./dist'),
       historyApiFallback: true,
     },
+    resolve: {
+      extensions: ['.js', '.jsx', '.json'], // resolve for import
+    },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          enforce: 'pre',
+          test: /\.jsx$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.jsx$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
         },
