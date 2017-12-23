@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "prop-types": "^15.6.0",
     "preact": "^8.2.7",
     "preact-compat": "^3.17.0",
     "react": "^16.2.0",

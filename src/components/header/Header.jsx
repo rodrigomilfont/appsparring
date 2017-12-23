@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './index.css';
 import LogoML from './Logo_ML.png';
 
 const Header = () => (
   <header className="header">
     <div className="box-logo">
-      <a href="#home">
+      <Link to="/">
         <img src={LogoML} alt="logo" />
-      </a>
+      </Link>
     </div>
     <div className="box-search">
       <input value="" type="text" placeholder="Buscar" />
-      <a href="#buscar" className="bt-search">
+      <Link to="/items" className="bt-search">
         Buscar
-      </a>
+      </Link>
     </div>
   </header>
 );
