@@ -1,0 +1,41 @@
+.app-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 90px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+header {
+  background-color: #ffe600;
+  padding: 0 130px;
+}
+
+.box-search {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-search input {
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #eee;
+  flex: auto;
+  height: 35px;
+  padding: 0 5px;
+}
+
+.bt-search {
+  background: url('./ic_Search.png') 9px 9px no-repeat #eee;
+  border-radius: 0 3px 3px 0;
+  border: 1px solid #eee;
+  display: block;
+  height: 35px;
+  text-indent: -9000px;
+  width: 35px;
+}
