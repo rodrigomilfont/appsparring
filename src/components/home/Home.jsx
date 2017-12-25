@@ -1,12 +1,10 @@
-// @flow
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/Header';
 
 const Home = props => (
   <div className="grid">
-    <Header {...props} />
+    <Header props={props} />
     <aside className="sidebar-left">
       <article>
         <h4>
