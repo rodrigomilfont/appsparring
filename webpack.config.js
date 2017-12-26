@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = () => {
   // console.log('__dirname: ', __dirname);
-  // console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
+  console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
   console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
 
   return {
@@ -16,26 +16,28 @@ module.exports = () => {
     // 'webpack/hot/only-dev-server',
     // './src/index.js',
     // ],
-    entry: { app: './src/index.jsx' },
+    entry: { main: './src/index.jsx' },
     output: {
       filename:
         process.env.NODE_ENV === 'production'
           ? '[name].[hash].bundle.js'
           : '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, './dist/'),
+      // path: __dirname + '/build' ,
+      pathinfo: true
       // filename: 'bundle.js',
     },
     plugins: [
       new CleanWebpackPlugin(['dist']),
-      new HtmlWebpackPlugin({
-        title: 'Output Updated',
-        template: 'index.html',
-      }),
+      // new HtmlWebpackPlugin({
+      //   title: 'Output HtmlWebpackPlugin',
+      //   template: 'index.html',
+      // }),
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: ['vendor'],
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: ['vendor'],
+      // }),
     ],
     devtool:
       process.env.NODE_ENV === 'production'
@@ -43,7 +45,7 @@ module.exports = () => {
         : 'cheap-eval-source-map',
     devServer: {
       hot: true,
-      // publicPath: path.resolve('./dist'),
+      publicPath: '/dist/',
       historyApiFallback: true,
     },
     resolve: {
