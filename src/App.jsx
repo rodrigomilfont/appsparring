@@ -6,8 +6,13 @@ import Home from './components/home/Home';
 import MainLayout from './templates/main/Main';
 import SearchLayout from './templates/search/Search';
 
-const ComposeLayoutRoute = ({ component: Component, layout: Layout }) => (
+const ComposeLayoutRoute = ({
+  component: Component,
+  layout: Layout,
+  ...rest
+}) => (
   <Route
+    {...rest}
     render={props => (
       <Layout>
         <Component {...props} />
@@ -29,9 +34,9 @@ ComposeLayoutRoute.defaultProps = {
 const App = () => (
   <Switch>
     <ComposeLayoutRoute exact path="/" layout={MainLayout} component={Home} />
+    <ComposeLayoutRoute path="/items" layout={SearchLayout} component={Items} />
     <ComposeLayoutRoute
-      exact
-      path="/items"
+      path="/items/:id"
       layout={SearchLayout}
       component={Items}
     />

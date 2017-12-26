@@ -31,7 +31,7 @@ class Header extends React.Component {
             type="text"
             placeholder="Buscar"
           />
-          <Link to="/items" className="bt-search">
+          <Link to={`/items?q=${this.state.searchTerm}`} className="bt-search">
             Buscar
           </Link>
         </div>
