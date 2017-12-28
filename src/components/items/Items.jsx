@@ -7,6 +7,8 @@ import Header from '../header/Header';
 class Items extends React.Component {
   constructor(props) {
     super(props);
+    console.log('props: ', props);
+
     this.state = {
       termHeader: '',
     };

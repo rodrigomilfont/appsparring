@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --color",
     "lint": "eslint **/*.{js,jsx} --quiet"
   },
   "keywords": [],

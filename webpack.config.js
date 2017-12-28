@@ -16,14 +16,19 @@ module.exports = () => {
     // 'webpack/hot/only-dev-server',
     // './src/index.js',
     // ],
-    entry: { app: './src/index.jsx' },
+    entry: { main: './src/index.jsx' },
     output: {
       filename:
         process.env.NODE_ENV === 'production'
           ? '[name].[hash].bundle.js'
-          : '[name].bundle.js',
+          : 'assets/[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
-      // filename: 'bundle.js',
+      publicPath: '/',
+    },
+    devServer: {
+      hot: true,
+      publicPath: '/',
+      historyApiFallback: true,
     },
     plugins: [
       new CleanWebpackPlugin(['dist']),
@@ -41,11 +46,7 @@ module.exports = () => {
       process.env.NODE_ENV === 'production'
         ? 'source-map'
         : 'cheap-eval-source-map',
-    devServer: {
-      hot: true,
-      // publicPath: path.resolve('./dist'),
-      historyApiFallback: true,
-    },
+
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       alias:
