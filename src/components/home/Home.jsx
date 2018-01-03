@@ -4,7 +4,7 @@ import Header from '../header/Header';
 
 const Home = props => (
   <div className="grid">
-    <Header props={props} />
+    <Header {...props} />
     <aside className="sidebar-left">
       <article>
         <h4>

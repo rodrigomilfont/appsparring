@@ -8,14 +8,22 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: '',
+      searchTerm: this.props.searchTerm || '',
     };
 
     this.handleSearchTermChange = event => {
       this.setState({ searchTerm: event.target.value });
       this.props.onSearchTermChange(event.target.value);
     };
+
+    this.handleSubmit = event => {
+      event.preventDefault();
+      this.props.history.push(`/items?search=${this.state.searchTerm}`);
+    };
   }
+
+  componentWillMount() {}
+
   render() {
     return (
       <header className="header">
@@ -25,13 +33,17 @@ class Header extends React.Component {
           </Link>
         </div>
         <div className="box-search">
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Buscar"
-          />
-          <Link to={`/items?q=${this.state.searchTerm}`} className="bt-search">
+          <form onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.handleSearchTermChange}
+              value={this.state.searchTerm}
+              type="text"
+              placeholder="Buscar"
+            />
+          </form>
+          <Link
+            to={`/items?search=${this.state.searchTerm}`}
+            className="bt-search">
             Buscar
           </Link>
         </div>
@@ -42,10 +54,18 @@ class Header extends React.Component {
 
 Header.propTypes = {
   onSearchTermChange: PropTypes.func,
+  searchTerm: PropTypes.string,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 };
 
 Header.defaultProps = {
   onSearchTermChange: function noo() {},
+  searchTerm: '',
+  history: {
+    push: function noo() {},
+  },
 };
 
 export default Header;

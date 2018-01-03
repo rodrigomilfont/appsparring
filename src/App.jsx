@@ -35,6 +35,11 @@ const App = () => (
   <Switch>
     <ComposeLayoutRoute exact path="/" layout={MainLayout} component={Home} />
     <ComposeLayoutRoute
+      path="/items?search=:search"
+      layout={SearchLayout}
+      component={props => <Items {...props} />}
+    />
+    <ComposeLayoutRoute
       path="/items/:id"
       layout={SearchLayout}
       component={props => <Items {...props} />}

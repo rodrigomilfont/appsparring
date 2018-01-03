@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = () => {
   // console.log('__dirname: ', __dirname);
-  console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+  // console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
+  // console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
 
   return {
     context: __dirname,
@@ -32,25 +32,20 @@ module.exports = () => {
     },
     plugins: [
       new CleanWebpackPlugin(['dist']),
-      // new HtmlWebpackPlugin({
-      //   title: 'Output HtmlWebpackPlugin',
-      //   template: 'index.html',
-      // }),
+      new HtmlWebpackPlugin({
+        title: 'Output HtmlWebpackPlugin',
+        template: 'index.html',
+      }),
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   name: ['vendor'],
-      // }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['vendor'],
+      }),
     ],
     devtool:
       process.env.NODE_ENV === 'production'
         ? 'source-map'
         : 'cheap-eval-source-map',
-    devServer: {
-      hot: true,
-      publicPath: '/dist/',
-      historyApiFallback: true,
-    },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       alias:
