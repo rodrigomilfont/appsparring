@@ -1,120 +1,107 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = () => {
+  // console.log('__dirname: ', __dirname);
+  // console.log("path.resolve('dist'): ", path.resolve(__dirname, 'dist'));
+  // console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+
   return {
-    entry: './src/index.js',
+    context: __dirname,
+    entry: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './src/index.jsx',
+    ],
+    // entry: { main: './src/index.jsx' },
     output: {
-      path: path.resolve('dist'),
-      filename: 'bundle.js',
+      filename:
+        process.env.NODE_ENV === 'production'
+          ? '[name].[hash].bundle.js'
+          : 'assets/[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
     },
-    devtool: 'source-map',
-    // devServer: {
-    //   publicPath: './dist',
-    // },
+    devServer: {
+      hot: true,
+      publicPath: '/',
+      historyApiFallback: true,
+    },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Output HtmlWebpackPlugin',
+        template: 'index.html',
+      }),
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['vendor'],
+      }),
+    ],
+    devtool:
+      process.env.NODE_ENV === 'production'
+        ? 'source-map'
+        : 'cheap-eval-source-map',
+    resolve: {
+      extensions: ['.js', '.jsx', '.json'],
+      alias:
+        process.env.NODE_ENV === 'production'
+          ? {
+              react: 'preact-compat',
+              'react-dom': 'preact-compat',
+            }
+          : {},
+    },
     module: {
       rules: [
         {
-          test: /\.js$/,
-          loader: 'babel-loader',
+          enforce: 'pre',
+          test: /\.jsx$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/,
+        },
+        {
+          oneOf: [
+            {
+              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              loader: require.resolve('url-loader'),
+              options: {
+                limit: 10000,
+                name: 'static/media/[name].[hash:8].[ext]',
+              },
+            },
+            {
+              test: /\.jsx$/,
+              loader: 'babel-loader',
+              exclude: /node_modules/,
+              options: {
+                cacheDirectory: true,
+              },
+            },
+            {
+              test: /\.css$/,
+              use: ['style-loader', 'css-loader'],
+              exclude: /node_modules/,
+            },
+            {
+              exclude: [/\.js$/, /\.html$/, /\.json$/],
+              loader: require.resolve('file-loader'),
+              options: {
+                name: 'static/media/[name].[hash:8].[ext]',
+              },
+            },
+          ],
         },
       ],
     },
+    stats: {
+      colors: true,
+      reasons: true,
+      chunks: true,
+    },
   };
 };
-
-// const path = require('path');
-//
-// module.exports = {
-//   context: __dirname,
-//   entry: './src/index.jsx',
-//
-//   output: {
-//     path: path.resolve('dist'),
-//     filename: 'bundle.js',
-//   },
-//
-//   module: {
-//     rules: [
-//       {
-//         test: /\.jsx$/,
-//         loader: 'babel-loader',
-//       },
-//     ],
-//   },
-// };
-//
-// const path = require('path');
-// const webpack = require('webpack');
-//
-// module.exports = {
-//   context: __dirname,
-//   entry: [
-//     // 'react-hot-loader/patch',
-//     // 'webpack-dev-server/client?http://localhost:8080',
-//     // 'webpack/hot/only-dev-server',
-//     './src/index.jsx',
-//   ],
-//   devtool: 'cheap-eval-source-map',
-//   output: {
-//     path: path.join(__dirname, 'public'),
-//     filename: 'bundle.js',
-//     publicPath: '/public/',
-//   },
-//   devServer: {
-//     // hot: true,
-//     publicPath: '/public/',
-//     historyApiFallback: false,
-//   },
-//   resolve: {
-//     extensions: ['.js', '.jsx', '.json'],
-//   },
-//   stats: {
-//     colors: true,
-//     reasons: true,
-//     chunks: true,
-//   },
-//   plugins: [
-//     // new webpack.HotModuleReplacementPlugin(),
-//     // new webpack.NamedModulesPlugin(),
-//   ],
-//   module: {
-//     rules: [
-//       {
-//         test: /\.jsx?$/,
-//         loader: 'babel-loader',
-//       },
-//     ],
-//   },
-// };
-//
-// const { resolve } = require('path');
-//
-// module.exports = env => {
-//   return {
-//     context: resolve('src'),
-//     entry: './index.jsx',
-//     output: {
-//       path: resolve('public'),
-//       filename: 'bundle.js',
-//       publicPath: '/public/',
-//     },
-//     devtool: env.prod ? 'source-map' : 'eval', // yargs
-//     resolve: {
-//       extensions: ['.js', '.jsx', '.json'],
-//     },
-//     stats: {
-//       colors: true,
-//       reasons: true,
-//       chunks: false,
-//     },
-//     module: {
-//       rules: [
-//         {
-//           test: /\.jsx?$/,
-//           loader: 'babel-loader',
-//         },
-//       ],
-//     },
-//   };
-// };
