@@ -10,13 +10,13 @@ module.exports = () => {
 
   return {
     context: __dirname,
-    // entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:8080',
-    // 'webpack/hot/only-dev-server',
-    // './src/index.js',
-    // ],
-    entry: { main: './src/index.jsx' },
+    entry: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './src/index.jsx',
+    ],
+    // entry: { main: './src/index.jsx' },
     output: {
       filename:
         process.env.NODE_ENV === 'production'

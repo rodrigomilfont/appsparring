@@ -56,7 +56,7 @@ class Items extends React.Component {
         <main className="content">
           <article>
             <Link to="/">Home</Link>
-            <h1>Search Term : {this.state.termHeader}</h1>
+            <h1>Search Term Items : {this.state.termHeader}</h1>
             <pre>
               <code>{JSON.stringify(this.state.resultSearch, null, 4)}</code>
             </pre>

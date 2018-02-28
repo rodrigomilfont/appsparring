@@ -10,6 +10,7 @@ const Home = props => (
         <h4>
           <Link to="/items">Items</Link>
         </h4>
+        <h1>Test</h1>
       </article>
     </aside>
     <main className="content">
@@ -22,7 +23,7 @@ const Home = props => (
     <aside className="sidebar-rigth">
       <p>
         <span className="bt_nav">
-          <Link to="/">Home</Link>
+          <Link to="/">Home Items</Link>
         </span>
       </p>
     </aside>
