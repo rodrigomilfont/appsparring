@@ -1,8 +1,6 @@
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
 import React from 'react';
-
 import SearchLayout from './templates/search/Search';
 import Home from './components/home/Home';
 
