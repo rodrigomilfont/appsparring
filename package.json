@@ -6,7 +6,10 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p",
     "dev": "webpack-dev-server --color",
-    "lint": "eslint **/*.{js,jsx} --quiet"
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "test": "jest --no-cache",
+    "test:watch": "jest --no-cache --watch",
+    "test:update": "jest --no-cache -u"
   },
   "keywords": [],
   "author": "",
@@ -60,11 +63,10 @@
   "jest": {
     "verbose": true,
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy",
-      "setupFiles": [
-        "<rootDir>/__mocks__/jestSetup.js"
-      ]
+      "setupFiles": ["<rootDir>/__mocks__/jestSetup.js"]
     }
   }
 }
