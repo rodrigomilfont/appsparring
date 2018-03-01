@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 
-const Search = props => <div className="search">{props.children}</div>;
+const SearchTemplate = props => (
+  <div className="search-tpl">{props.children}</div>
+);
 
-Search.propTypes = {
+SearchTemplate.propTypes = {
   children: PropTypes.element,
 };
 
-Search.defaultProps = {
+SearchTemplate.defaultProps = {
   children: function noop() {},
 };
 
-export default Search;
+export default SearchTemplate;
