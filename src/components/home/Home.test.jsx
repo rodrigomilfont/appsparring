@@ -3,6 +3,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import Home from './Home';
 
+import Header from '../header/Header';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders Home', () => {
@@ -13,4 +15,10 @@ it('renders Home', () => {
 it('example of debug use', () => {
   const wrapper = shallow(<Home />);
   console.log(wrapper.find('.footer').debug());
+});
+
+it('check if header', () => {
+  const wrapper = shallow(<Home />);
+  // expect(wrapper)
+  console.log(': ', wrapper.find(Header).debug());
 });
