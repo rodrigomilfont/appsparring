@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",
+    "chai": "^4.1.2",
     "preact": "^8.2.7",
     "preact-compat": "^3.17.0",
     "prop-types": "^15.6.0",
@@ -64,10 +65,11 @@
   "jest": {
     "verbose": true,
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy",
-      "setupFiles": ["<rootDir>/__mocks__/jestSetup.js"]
+      "setupFiles": [
+        "<rootDir>/__mocks__/jestSetup.js"
+      ]
     }
   }
 }

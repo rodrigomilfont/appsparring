@@ -30,8 +30,16 @@ it('set state test', () => {
     </BrowserRouter>,
   );
   const header = wrapper.find(Header);
+  // expect(wrapper).toMatchSnapshot();
   wrapper.setProps({ searchTerm: 'value set by test' });
   // console.log('wrapper: ', wrapper.debug());
   wrapper.update();
-  // console.log('wrapper: ', wrapper.html());
+  console.log('wrapper: ', wrapper.html());
+});
+
+it('simulate click', () => {
+  const wrapper = shallow(<Header />);
+  expect(wrapper).toMatchSnapshot();
+  wrapper.find('.bt-search').simulate('click');
+  expect(wrapper).toMatchSnapshot();
 });
