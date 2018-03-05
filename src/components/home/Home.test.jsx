@@ -29,12 +29,8 @@ it('set state test', () => {
       <Home searchTerm="initial value" />
     </BrowserRouter>,
   );
-  const header = wrapper.find(Header);
-  // expect(wrapper).toMatchSnapshot();
   wrapper.setProps({ searchTerm: 'value set by test' });
-  // console.log('wrapper: ', wrapper.debug());
   wrapper.update();
-  console.log('wrapper: ', wrapper.html());
 });
 
 it('simulate click', () => {
