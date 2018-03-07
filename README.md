@@ -1,4 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+Install via yarn:
+
+```bash
+yarn 
+```
+
+Dev:
+
+```bash
+yarn dev
+```
 
 *** Jest/Enzyme
-** Branch test-f-jest
+*** Webpack
+
+| Category | Code Changes | Info |
+| ------ | ------ |------ |
+| Test | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |  |
