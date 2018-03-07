@@ -24,13 +24,16 @@ it('check if header component is instanced', () => {
 });
 
 it('set state test', () => {
-  const wrapper = mount(
+  const wrapper = shallow(
     <BrowserRouter>
       <Home searchTerm="initial value" />
     </BrowserRouter>,
   );
   wrapper.setProps({ searchTerm: 'value set by test' });
   wrapper.update();
+
+	console.log(": ",wrapper.debug() );
+	// FIX
 });
 
 it('simulate click', () => {
