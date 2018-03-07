@@ -7,7 +7,9 @@
 /coverage
 
 # production
-/build
+/dist
+#dev
+/public
 
 # misc
 .DS_Store
@@ -19,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.orig
+
+__snapshots__
