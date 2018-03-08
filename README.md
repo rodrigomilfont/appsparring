@@ -23,7 +23,7 @@ yarn build
 | Category | Code Changes                                                                | Info |
 | -------- | --------------------------------------------------------------------------- | ---- |
 | Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |      |
-| Webpack     | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |      |
+| Webpack     | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...webpackUpdate) |      |
 | -------- | --------------------------------------------------------------------------- | ---- |
 
 * Bugs
