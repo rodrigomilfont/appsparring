@@ -10,7 +10,7 @@ const Home = props => (
         <h4>
           <Link to="/items">Items</Link>
         </h4>
-        <h1>Test</h1>
+        <h1>Home -.jsx</h1>
       </article>
     </aside>
     <main className="content">
