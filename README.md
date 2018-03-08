@@ -1,7 +1,7 @@
 Install via yarn:
 
 ```bash
-yarn 
+yarn
 ```
 
 Dev:
@@ -10,9 +10,20 @@ Dev:
 yarn dev
 ```
 
-*** Jest/Enzyme
-*** Webpack
+Prod:
 
-| Category | Code Changes | Info |
-| ------ | ------ |------ |
-| Test | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |  |
+```bash
+yarn build
+```
+
+**_ Jest/Enzyme
+_** Webpack 4
+\*\*\* Axios
+
+| Category | Code Changes                                                                | Info |
+| -------- | --------------------------------------------------------------------------- | ---- |
+| Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |      |
+
+* Bugs
+
+-
