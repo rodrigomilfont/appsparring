@@ -18,21 +18,21 @@ module.exports = merge(common, {
     new webpack.HashedModuleIdsPlugin(),
   ],
   optimization: {
-    // minimize: true,
-    // concatenateModules: false,
-    // noEmitOnErrors: true,
-    // namedModules: true,
-    // namedChunks: true,
-    // runtimeChunk: false,
-    // splitChunks: {
-    //   chunks: 'all',
-    //   name: true,
-    //   cacheGroups: {
-    //     commons: {
-    //       name: 'commons',
-    //       minChunks: 2,
-    //     },
-    //   },
-    // },
+    minimize: true,
+    concatenateModules: false,
+    noEmitOnErrors: true,
+    namedModules: true,
+    namedChunks: true,
+    runtimeChunk: false,
+    splitChunks: {
+      chunks: 'all',
+      name: true,
+      cacheGroups: {
+        commons: {
+          name: 'commons',
+          minChunks: 2,
+        },
+      },
+    },
   },
 });
