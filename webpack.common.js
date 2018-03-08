@@ -1,9 +1,11 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.jsx'),
+  entry: {
+    app: path.resolve(__dirname, 'src/index.jsx'),
+  },
   module: {
     rules: [
       {
@@ -31,7 +33,14 @@ module.exports = {
           },
           {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
+            use: [
+              {
+                loader: 'style-loader',
+              },
+              {
+                loader: 'css-loader',
+              },
+            ],
             exclude: /node_modules/,
           },
           {
@@ -50,27 +59,16 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx', '.css'],
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebPackPlugin({
-      template: './index.html',
       filename: './index.html',
+      title: 'Output HtmlWebpackPlugin',
+      template: 'index.html',
     }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
-    // options related to how webpack emits results
-    path: path.resolve(__dirname, 'dist'), // string
-    // the target directory for all output files
-    // must be an absolute path (use the Node.js path module)
-    filename: 'bundle.js', // string
-    // the filename template for entry chunks
-
-    publicPath: '/', // string
-    // the url to the output directory resolved relative to the HTML page
-  },
-  devServer: {
-    compress: true, // enable gzip compression
-    historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-    hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
 };
