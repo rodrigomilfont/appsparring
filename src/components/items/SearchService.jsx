@@ -34,7 +34,9 @@ class SearchService {
     return this.searchTerm
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap(term => (term ? this.doSearch(term) : Observable.of([])))
+      .switchMap(
+        term => (term ? this.doSearch(term.trim()) : Observable.of([])),
+      )
       .catch(error => {
         /* eslint no-console: ["error", { allow: [ 'error' ] }] */
         console.error(error);
