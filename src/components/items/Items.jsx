@@ -8,11 +8,9 @@ class Items extends React.Component {
   constructor(props) {
     super(props);
 
-    // It's necessary?
-    this.props = props;
-
     this.state = {
       termHeader: '',
+      resultSearch: [],
     };
 
     this.handleHeader = searchTerm => {
@@ -41,7 +39,6 @@ class Items extends React.Component {
     // Duplicate code
     const query = new URLSearchParams(this.props.location.search);
     const value = query.get('search');
-
     this.makeRequest(value);
   }
 
@@ -66,6 +63,7 @@ class Items extends React.Component {
     );
   }
 }
+
 Items.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
