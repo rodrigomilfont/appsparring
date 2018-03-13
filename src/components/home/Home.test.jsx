@@ -1,10 +1,10 @@
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
-
 import Header from '../header/Header';
+import HeaderSearch from '../../containers/header/HeaderSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -32,12 +32,12 @@ it('set state test', () => {
   wrapper.setProps({ searchTerm: 'value set by test' });
   wrapper.update();
 
-	console.log(": ",wrapper.debug() );
-	// FIX
+  console.log(': ', wrapper.debug());
+  // FIX
 });
 
 it('simulate click', () => {
-  const wrapper = shallow(<Header />);
+  const wrapper = shallow(<HeaderSearch />);
   expect(wrapper).toMatchSnapshot();
   wrapper.find('.bt-search').simulate('click');
   expect(wrapper).toMatchSnapshot();
