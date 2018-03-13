@@ -2,31 +2,3 @@ header.header {
   background-color: #ffe600;
   padding: 0 3em;
 }
-
-.box-search {
-  display: flex;
-  flex-direction: row;
-}
-
-.box-search form {
-  flex: auto;
-}
-
-.box-search input {
-  border-radius: 3px 0 0 3px;
-  border: 1px solid #eee;
-  flex: auto;
-  height: 35px;
-  padding: 0 5px;
-  width: 100%;
-}
-
-.bt-search {
-  background: url('./ic_Search.png') 9px 9px no-repeat #eee;
-  border-radius: 0 3px 3px 0;
-  border: 1px solid #eee;
-  display: block;
-  height: 35px;
-  text-indent: -9000px;
-  width: 35px;
-}
