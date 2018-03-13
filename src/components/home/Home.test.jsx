@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
 
 import Header from '../header/Header';
+import HeaderSearch from '../../containers/header/HeaderSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -37,7 +38,7 @@ it('set state test', () => {
 });
 
 it('simulate click', () => {
-  const wrapper = shallow(<Header />);
+  const wrapper = shallow(<HeaderSearch />);
   expect(wrapper).toMatchSnapshot();
   wrapper.find('.bt-search').simulate('click');
   expect(wrapper).toMatchSnapshot();
