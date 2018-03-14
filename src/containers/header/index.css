@@ -16,6 +16,10 @@
   width: 100%;
 }
 
+.box-search input:focus {
+  outline: none;
+}
+
 .bt-search {
   background: url('./ic_Search.png') 9px 9px no-repeat #eee;
   border-radius: 0 3px 3px 0;
