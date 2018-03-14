@@ -30,6 +30,7 @@ class HeaderSearch extends React.Component {
             value={this.state.searchTerm}
             type="text"
             placeholder="Buscar"
+            tabIndex="0"
           />
         </form>
         <Link

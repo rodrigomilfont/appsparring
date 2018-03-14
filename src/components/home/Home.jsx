@@ -30,9 +30,7 @@ const Home = props => (
       </p>
     </aside>
     <footer className="footer">
-      <p className="footer-text">
-        To get started, edit <code>src/.js</code> and save to reload.
-      </p>
+      <p className="footer-text">Footer</p>
     </footer>
   </div>
 );
