@@ -5,7 +5,7 @@ import './index.css';
 import LogoML from './Logo_ML.png';
 
 const Header = props => {
-  console.log('Header: ',  props);
+  console.log('Header: ', props);
   return (
     <header className="header">
       <div className="box-logo">
@@ -13,7 +13,7 @@ const Header = props => {
           <img src={LogoML} alt="logo" />
         </Link>
       </div>
-        <HeaderSearch {...props} />
+      <HeaderSearch {...props} />
     </header>
   );
 };
