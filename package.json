@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --mode production --config webpack.production.js",
+    "build":
+      "NODE_ENV=production webpack --mode production --config webpack.production.js",
     "build:all": "yarn build && serve dist",
-    "dev": "webpack-dev-server --mode development --open --config webpack.dev.js",
+    "dev":
+      "webpack-dev-server --mode development --open --config webpack.dev.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "test": "jest --no-cache",
     "test:watch": "jest --no-cache --watch",
@@ -63,12 +65,15 @@
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/webpack.*.{js}",
+      "!**/registerServiceWorker.jsx",
+      "!**/src/index.jsx",
       "!**/coverage/**",
       "!**/node_modules/**",
       "!**/vendor/**"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy"
     }
   }

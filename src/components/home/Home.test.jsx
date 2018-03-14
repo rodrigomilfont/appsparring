@@ -3,7 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
-import Header from '../header/Header.jsx';
+import Header from '../header/Header';
 import HeaderSearch from '../../containers/header/HeaderSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
