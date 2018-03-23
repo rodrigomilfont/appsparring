@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.css';
@@ -11,8 +11,8 @@ class HeaderSearch extends React.Component {
 
     this.handleSubmit = event => {
       event.preventDefault();
-      this.props.getAPIData(this.props.searchTerm);
       this.props.history.push(`/items?search=${this.props.searchTerm}`);
+      this.props.getAPIData(this.props.searchTerm);
     };
   }
 
@@ -69,4 +69,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderSearch);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HeaderSearch),
+);
