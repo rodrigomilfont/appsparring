@@ -4,23 +4,20 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 
-const Items = props => {
-  console.log('Items: ', props);
-  return (
-    <div className="grid">
-      <Header />
-      <main className="content">
-        <article>
-          <Link to="/">Home</Link>
-          <h1>Search Term Items : {props.searchTerm}</h1>
-          <pre>
-            <code>{JSON.stringify(props.searchResult, null, 4)}</code>
-          </pre>
-        </article>
-      </main>
-    </div>
-  );
-};
+const Items = props => (
+  <div className="grid">
+    <Header />
+    <main className="content">
+      <article>
+        <Link to="/">Home</Link>
+        <h1>Search Term Items : {props.searchTerm}</h1>
+        <pre>
+          <code>{JSON.stringify(props.searchResult, null, 4)}</code>
+        </pre>
+      </article>
+    </main>
+  </div>
+);
 
 Items.propTypes = {
   searchTerm: PropTypes.string,
