@@ -1,23 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './index.css';
+import { setSearchTerm, fetchPosts } from '../../actionCreators';
 
 class HeaderSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchTerm: this.props.searchTerm || '',
-    };
-
-    this.handleSearchTermChange = event => {
-      this.setState({ searchTerm: event.target.value });
-      this.props.onSearchTermChange(event.target.value);
-    };
 
     this.handleSubmit = event => {
       event.preventDefault();
-      this.props.history.push(`/items?search=${this.state.searchTerm}`);
+      this.props.history.push(`/items?search=${this.props.searchTerm}`);
+      this.props.fetchPostAsync(this.props.searchTerm);
     };
   }
 
@@ -26,15 +21,15 @@ class HeaderSearch extends React.Component {
       <div className="box-search">
         <form onSubmit={this.handleSubmit}>
           <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
+            onChange={this.props.handleSearchTermChange}
+            value={this.props.searchTerm}
             type="text"
-            placeholder="Buscar"
+            placeholder="Search"
             tabIndex="0"
           />
         </form>
         <Link
-          to={`/items?search=${this.state.searchTerm}`}
+          to={`/items?search=${this.props.searchTerm}`}
           className="bt-search">
           Buscar
         </Link>
@@ -44,7 +39,8 @@ class HeaderSearch extends React.Component {
 }
 
 HeaderSearch.propTypes = {
-  onSearchTermChange: PropTypes.func,
+  fetchPostAsync: PropTypes.func,
+  handleSearchTermChange: PropTypes.func,
   searchTerm: PropTypes.string,
   history: PropTypes.shape({
     push: PropTypes.func,
@@ -52,11 +48,30 @@ HeaderSearch.propTypes = {
 };
 
 HeaderSearch.defaultProps = {
-  onSearchTermChange: function noo() {},
+  fetchPostAsync: function noop() {},
+  handleSearchTermChange: function noo() {},
   searchTerm: '',
   history: {
     push: function noo() {},
   },
 };
 
-export default HeaderSearch;
+const mapStateToProps = state => {
+  const { searchTerm } = state;
+  return {
+    searchTerm,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  handleSearchTermChange(event) {
+    dispatch(setSearchTerm(event.target.value));
+  },
+  fetchPostAsync(searchTerm) {
+    dispatch(fetchPosts(searchTerm));
+  },
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HeaderSearch),
+);

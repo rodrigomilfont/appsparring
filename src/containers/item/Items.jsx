@@ -1,81 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 
-class Items extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      termHeader: '',
-      resultSearch: [],
-    };
-
-    this.handleHeader = searchTerm => {
-      this.setState({ termHeader: searchTerm });
-      this.makeRequest(searchTerm);
-    };
-
-    this.makeRequest = searchTerm => {
-      axios
-        .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
-        .then(response => {
-          this.setState({ resultSearch: response.data });
-        });
-    };
-  }
-
-  componentWillMount() {
-    // Duplicate code
-    const query = new URLSearchParams(this.props.location.search);
-    const value = query.get('search');
-
-    this.setState({ termHeader: value });
-  }
-
-  componentDidMount() {
-    // Duplicate code
-    const query = new URLSearchParams(this.props.location.search);
-    const value = query.get('search');
-    this.makeRequest(value);
-  }
-
-  render(props) {
-    return (
-      <div className="grid">
-        <Header
-          onSearchTermChange={this.handleHeader}
-          searchTerm={this.state.termHeader}
-          {...props}
-        />
-        <main className="content">
-          <article>
-            <Link to="/">Home</Link>
-            <h1>Search Term Items : {this.state.termHeader}</h1>
-            <pre>
-              <code>
-                {JSON.stringify(this.state.resultSearch.filters, null, 4)}
-              </code>
-            </pre>
-          </article>
-        </main>
-      </div>
-    );
-  }
-}
+const Items = props => {
+  const { posts, isFetching, lastUpdate } = props;
+  return (
+    <div className="grid">
+      <Header />
+      <main className="content">
+        <article>
+          <Link to="/">Home</Link>
+          <br />
+          {/* // Super loading */}
+          {isFetching && posts.length === 0 && <h2>Loading...</h2>}
+          {lastUpdate && (
+            <span>
+              Last updated at {new Date(lastUpdate).toLocaleTimeString()}
+            </span>
+          )}
+          {posts.length !== 0 && (
+            <div>
+              <h2>Search Term Items : {props.searchTerm}</h2>
+              <pre>
+                <code>{JSON.stringify(posts, null, 4)}</code>
+              </pre>
+            </div>
+          )}
+        </article>
+      </main>
+    </div>
+  );
+};
 
 Items.propTypes = {
-  location: PropTypes.shape({
-    search: PropTypes.string,
-  }),
+  posts: PropTypes.arrayOf(PropTypes.object),
+  isFetching: PropTypes.bool,
+  lastUpdate: PropTypes.number,
+  searchTerm: PropTypes.string,
 };
 
 Items.defaultProps = {
-  location: {
-    search: '',
-  },
+  posts: [],
+  isFetching: false,
+  lastUpdate: null,
+  searchTerm: '',
 };
 
-export default Items;
+const mapStateToProps = state => {
+  const { searchTerm, postBySearchTerm } = state;
+
+  const { isFetching, lastUpdate, items: posts } = postBySearchTerm[
+    searchTerm
+  ] || {
+    isFetching: false,
+    items: [],
+  };
+
+  return {
+    searchTerm,
+    isFetching,
+    lastUpdate,
+    posts,
+  };
+};
+
+export default connect(mapStateToProps)(Items);

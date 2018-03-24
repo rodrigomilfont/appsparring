@@ -1,31 +1,42 @@
-Install via yarn:
+# App Sparring
+
+* Install via yarn:
 
 ```bash
 yarn
 ```
 
-Dev:
+* Dev:
 
 ```bash
 yarn dev
 ```
 
-Prod:
+* Prod:
 
 ```bash
 yarn build
+```
+
+* Test Coverage
+
+```bash
+yarn test:coverage
+```
+* Test
+```bash
+yarn test
 ```
 
 * Jest/Enzyme
 * Webpack 4
 * Axios
 
-| Category | Code Changes                                                                | Info |
-| -------- | --------------------------------------------------------------------------- | ---- |
-| Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |      |
-| Webpack     | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...webpackUpdate) |      |
-| -------- | --------------------------------------------------------------------------- | ---- |
+| Category | Code Changes                                                                              | Info |
+| -------- | ----------------------------------------------------------------------------------------- | ---- |
+| Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid)               |      |
+| Webpack  | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...webpackUpdate) |      |
+| Rxjs     | [Rxjs](https://github.com/rodrigomilfont/appsparring/compare/master...rxjs)               |      |
 
-* Bugs
+* Code Coverage
 
-- Code Coverage
