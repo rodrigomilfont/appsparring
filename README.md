@@ -1,19 +1,31 @@
-Install via yarn:
+# App Sparring
+
+* Install via yarn:
 
 ```bash
 yarn
 ```
 
-Dev:
+* Dev:
 
 ```bash
 yarn dev
 ```
 
-Prod:
+* Prod:
 
 ```bash
 yarn build
+```
+
+* Test Coverage
+
+```bash
+yarn test:coverage
+```
+* Test
+```bash
+yarn test
 ```
 
 * Jest/Enzyme
@@ -28,9 +40,3 @@ yarn build
 
 * Code Coverage
 
-* Test
-  \*\* Coverage
-
-```bash
-yarn test:coverage
-```
