@@ -20,12 +20,17 @@ yarn build
 * Webpack 4
 * Axios
 
-| Category | Code Changes                                                                | Info |
-| -------- | --------------------------------------------------------------------------- | ---- |
-| Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid) |      |
-| Webpack     | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...webpackUpdate) |      |
-| -------- | --------------------------------------------------------------------------- | ---- |
+| Category | Code Changes                                                                              | Info |
+| -------- | ----------------------------------------------------------------------------------------- | ---- |
+| Test     | [Jest](https://github.com/rodrigomilfont/appsparring/compare/master...grid)               |      |
+| Webpack  | [Webpack 4](https://github.com/rodrigomilfont/appsparring/compare/master...webpackUpdate) |      |
+| Rxjs     | [Rxjs](https://github.com/rodrigomilfont/appsparring/compare/master...rxjs)               |      |
 
-* Bugs
+* Code Coverage
 
-- Code Coverage
+* Test
+  \*\* Coverage
+
+```bash
+yarn test:coverage
+```
