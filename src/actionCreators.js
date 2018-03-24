@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_SEARCH_TERM, ADD_API_DATA } from './actions';
+import { SET_SEARCH_TERM, REQUEST_POST, RECEIVE_POST } from './actions';
 
 export function setSearchTerm(searchTerm) {
   return {
@@ -8,20 +8,29 @@ export function setSearchTerm(searchTerm) {
   };
 }
 
-export function addAPIData(apiData) {
+export function requestPost(searchTerm) {
   return {
-    type: ADD_API_DATA,
-    payload: apiData,
+    type: REQUEST_POST,
+    searchTerm,
   };
 }
 
-export function getAPIDetails(searchTerm) {
+export function receivePost(searchTerm, json) {
+  return {
+    type: RECEIVE_POST,
+    searchTerm,
+    post: json,
+    receiveAt: Date.now(),
+  };
+}
+
+export function fetchPosts(searchTerm) {
   return dispatch => {
+    dispatch(requestPost(searchTerm));
     axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
-      // .get(`https://swapi.co/api/people/?search=${searchTerm}`)
       .then(response => {
-        dispatch(addAPIData(response.data));
+        dispatch(receivePost(searchTerm, [response.data]));
       })
       .catch(error => {
         console.error('axios error', error); // eslint-disable-line no-console

@@ -1,17 +1,8 @@
 import { combineReducers } from 'redux';
-import { SET_SEARCH_TERM, ADD_API_DATA, REQUEST_POST } from './actions';
+import { SET_SEARCH_TERM, REQUEST_POST, RECEIVE_POST } from './actions';
 
 const DEFAULT_STATE = {
   searchTerm: '',
-  apiData: {},
-};
-
-const apiData = (state = DEFAULT_STATE.apiData, action) => {
-  if (action.type === ADD_API_DATA) {
-    return Object.assign({}, state, action.payload);
-  }
-
-  return state;
 };
 
 const searchTerm = (state = DEFAULT_STATE.searchTerm, action) => {
@@ -21,14 +12,46 @@ const searchTerm = (state = DEFAULT_STATE.searchTerm, action) => {
   return state;
 };
 
-const requestPost = (state = [], action) => {
-  if (action.type === REQUEST_POST) {
-    return Object.assign({}, state, action.payload);
+function posts(
+  state = {
+    isFetching: false,
+    didInvalidate: false,
+    items: [],
+  },
+  action,
+) {
+  switch (action.type) {
+    case REQUEST_POST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: true,
+      });
+
+    case RECEIVE_POST:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        items: action.post,
+        lastUpdate: action.receiveAt,
+      });
+
+    default:
+      return state;
   }
+}
 
-  return state;
-};
+function postBySearchTerm(state = [], action) {
+  switch (action.type) {
+    case REQUEST_POST:
+    case RECEIVE_POST:
+      return Object.assign({}, state, {
+        [action.searchTerm]: posts(state[action.searchTerm], action),
+      });
+    default:
+      return state;
+  }
+}
 
-const rootReducer = combineReducers({ searchTerm, apiData, requestPost });
+const rootReducer = combineReducers({ searchTerm, postBySearchTerm });
 
 export default rootReducer;
