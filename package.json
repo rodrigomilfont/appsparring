@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production webpack --mode production --config webpack.production.js",
     "build:all": "yarn build && serve dist",
     "dev": "webpack-dev-server --mode development --open --config webpack.dev.js",
-    "lint": "eslint **/*.{js,jsx} --quiet",
+    "lint": "eslint src/*.{js,jsx} --quiet",
     "test": "jest --no-cache",
     "test:watch": "jest --no-cache --watch",
     "test:update": "jest --no-cache -u",
