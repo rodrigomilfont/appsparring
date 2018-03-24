@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/Header';
 import donaGata from '../header/donaGata84.jpg';
+import Felix from '../header/felix_the_cat.svg';
 
 const Home = props => (
   <div className="grid">
@@ -16,6 +17,7 @@ const Home = props => (
     </aside>
     <main className="content">
       <img src={donaGata} alt="" />
+      <img src={Felix} alt="Felix" width="200" />
       <article>
         <pre>
           <code>{JSON.stringify(props, null, 4)}</code>
