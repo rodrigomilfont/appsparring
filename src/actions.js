@@ -1,5 +1,5 @@
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const ADD_API_DATA = 'ADD_API_DATA';
 
-export const REQUEST_POST = 'REQUEST_POST';
-export const RECEIVE_POST = 'RECEIVE_POST';
+export const REQUEST_SEARCH = 'REQUEST_SEARCH';
+export const RECEIVE_SEARCH = 'RECEIVE_SEARCH';

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.css';
-import { setSearchTerm, fetchPosts } from '../../actionCreators';
+import { setSearchTerm, fetchSearch } from '../../actionCreators';
 
 class HeaderSearch extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class HeaderSearch extends React.Component {
     this.handleSubmit = event => {
       event.preventDefault();
       this.props.history.push(`/items?search=${this.props.searchTerm}`);
-      this.props.fetchPostAsync(this.props.searchTerm);
+      this.props.fetchSearchAsync(this.props.searchTerm);
     };
   }
 
@@ -39,7 +39,7 @@ class HeaderSearch extends React.Component {
 }
 
 HeaderSearch.propTypes = {
-  fetchPostAsync: PropTypes.func,
+  fetchSearchAsync: PropTypes.func,
   handleSearchTermChange: PropTypes.func,
   searchTerm: PropTypes.string,
   history: PropTypes.shape({
@@ -48,7 +48,7 @@ HeaderSearch.propTypes = {
 };
 
 HeaderSearch.defaultProps = {
-  fetchPostAsync: function noop() {},
+  fetchSearchAsync: function noop() {},
   handleSearchTermChange: function noo() {},
   searchTerm: '',
   history: {
@@ -67,8 +67,8 @@ const mapDispatchToProps = dispatch => ({
   handleSearchTermChange(event) {
     dispatch(setSearchTerm(event.target.value));
   },
-  fetchPostAsync(searchTerm) {
-    dispatch(fetchPosts(searchTerm));
+  fetchSearchAsync(searchTerm) {
+    dispatch(fetchSearch(searchTerm));
   },
 });
 

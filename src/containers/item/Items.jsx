@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 
 const Items = props => {
-  const { posts, isFetching, lastUpdate } = props;
+  const { searchs, isFetching, lastUpdate } = props;
   return (
     <div className="grid">
       <Header />
@@ -14,17 +14,17 @@ const Items = props => {
           <Link to="/">Home</Link>
           <br />
           {/* // Super loading */}
-          {isFetching && posts.length === 0 && <h2>Loading...</h2>}
+          {isFetching && searchs.length === 0 && <h2>Loading...</h2>}
           {lastUpdate && (
             <span>
               Last updated at {new Date(lastUpdate).toLocaleTimeString()}
             </span>
           )}
-          {posts.length !== 0 && (
+          {searchs.length !== 0 && (
             <div>
               <h2>Search Term Items : {props.searchTerm}</h2>
               <pre>
-                <code>{JSON.stringify(posts, null, 4)}</code>
+                <code>{JSON.stringify(searchs, null, 4)}</code>
               </pre>
             </div>
           )}
@@ -35,23 +35,23 @@ const Items = props => {
 };
 
 Items.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object),
+  searchs: PropTypes.arrayOf(PropTypes.object),
   isFetching: PropTypes.bool,
   lastUpdate: PropTypes.number,
   searchTerm: PropTypes.string,
 };
 
 Items.defaultProps = {
-  posts: [],
+  searchs: [],
   isFetching: false,
   lastUpdate: null,
   searchTerm: '',
 };
 
 const mapStateToProps = state => {
-  const { searchTerm, postBySearchTerm } = state;
+  const { searchTerm, resultBySearchTerm } = state;
 
-  const { isFetching, lastUpdate, items: posts } = postBySearchTerm[
+  const { isFetching, lastUpdate, items: searchs } = resultBySearchTerm[
     searchTerm
   ] || {
     isFetching: false,
@@ -62,7 +62,7 @@ const mapStateToProps = state => {
     searchTerm,
     isFetching,
     lastUpdate,
-    posts,
+    searchs,
   };
 };
 

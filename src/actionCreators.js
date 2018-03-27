@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_SEARCH_TERM, REQUEST_POST, RECEIVE_POST } from './actions';
+import { SET_SEARCH_TERM, REQUEST_SEARCH, RECEIVE_SEARCH } from './actions';
 
 export function setSearchTerm(searchTerm) {
   return {
@@ -8,29 +8,29 @@ export function setSearchTerm(searchTerm) {
   };
 }
 
-export function requestPost(searchTerm) {
+export function requestSearch(searchTerm) {
   return {
-    type: REQUEST_POST,
+    type: REQUEST_SEARCH,
     searchTerm,
   };
 }
 
-export function receivePost(searchTerm, json) {
+export function receiveSearch(searchTerm, json) {
   return {
-    type: RECEIVE_POST,
+    type: RECEIVE_SEARCH,
     searchTerm,
-    post: json,
+    results: json,
     receiveAt: Date.now(),
   };
 }
 
-export function fetchPosts(searchTerm) {
+export function fetchSearch(searchTerm) {
   return dispatch => {
-    dispatch(requestPost(searchTerm));
+    dispatch(requestSearch(searchTerm));
     axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
       .then(response => {
-        dispatch(receivePost(searchTerm, [response.data]));
+        dispatch(receiveSearch(searchTerm, [response.data]));
       })
       .catch(error => {
         console.error('axios error', error); // eslint-disable-line no-console
