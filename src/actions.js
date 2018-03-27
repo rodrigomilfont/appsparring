@@ -3,3 +3,4 @@ export const ADD_API_DATA = 'ADD_API_DATA';
 
 export const REQUEST_SEARCH = 'REQUEST_SEARCH';
 export const RECEIVE_SEARCH = 'RECEIVE_SEARCH';
+export const FAILED_SEARCH = 'FAILED_SEARCH';

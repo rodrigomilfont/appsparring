@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 
 const Items = props => {
-  const { searchs, isFetching, lastUpdate } = props;
+  const {
+    searchTerm,
+    searchs,
+    isFetching,
+    lastUpdate,
+    error,
+    errorMsg,
+  } = props;
   return (
     <div className="grid">
       <Header />
@@ -14,7 +21,8 @@ const Items = props => {
           <Link to="/">Home</Link>
           <br />
           {/* // Super loading */}
-          {isFetching && searchs.length === 0 && <h2>Loading...</h2>}
+          {isFetching && searchs.length === 0 && !error && <h2>Loading...</h2>}
+          {error && <h2>Search failed...try again! Msg: {errorMsg} </h2>}
           {lastUpdate && (
             <span>
               Last updated at {new Date(lastUpdate).toLocaleTimeString()}
@@ -22,7 +30,7 @@ const Items = props => {
           )}
           {searchs.length !== 0 && (
             <div>
-              <h2>Search Term Items : {props.searchTerm}</h2>
+              <h2>Search Term Items : {searchTerm}</h2>
               <pre>
                 <code>{JSON.stringify(searchs, null, 4)}</code>
               </pre>
@@ -37,6 +45,8 @@ const Items = props => {
 Items.propTypes = {
   searchs: PropTypes.arrayOf(PropTypes.object),
   isFetching: PropTypes.bool,
+  error: PropTypes.bool,
+  errorMsg: PropTypes.string,
   lastUpdate: PropTypes.number,
   searchTerm: PropTypes.string,
 };
@@ -44,12 +54,16 @@ Items.propTypes = {
 Items.defaultProps = {
   searchs: [],
   isFetching: false,
+  error: false,
+  errorMsg: '',
   lastUpdate: null,
   searchTerm: '',
 };
 
 const mapStateToProps = state => {
-  const { searchTerm, resultBySearchTerm } = state;
+  const { searchTerm, resultBySearchTerm, failedSearch } = state;
+
+  const { error, errorMsg } = failedSearch || { error: false, errorMsg: '' };
 
   const { isFetching, lastUpdate, items: searchs } = resultBySearchTerm[
     searchTerm
@@ -63,6 +77,8 @@ const mapStateToProps = state => {
     isFetching,
     lastUpdate,
     searchs,
+    error,
+    errorMsg,
   };
 };
 

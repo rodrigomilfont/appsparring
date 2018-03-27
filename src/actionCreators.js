@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { SET_SEARCH_TERM, REQUEST_SEARCH, RECEIVE_SEARCH } from './actions';
+import {
+  SET_SEARCH_TERM,
+  REQUEST_SEARCH,
+  RECEIVE_SEARCH,
+  FAILED_SEARCH,
+} from './actions';
 
 export function setSearchTerm(searchTerm) {
   return {
@@ -24,6 +29,14 @@ export function receiveSearch(searchTerm, json) {
   };
 }
 
+export function failedSearch(searchTerm, error) {
+  return {
+    type: FAILED_SEARCH,
+    searchTerm,
+    error,
+  };
+}
+
 export function fetchSearch(searchTerm) {
   return dispatch => {
     dispatch(requestSearch(searchTerm));
@@ -33,7 +46,8 @@ export function fetchSearch(searchTerm) {
         dispatch(receiveSearch(searchTerm, [response.data]));
       })
       .catch(error => {
-        console.error('axios error', error); // eslint-disable-line no-console
+        dispatch(failedSearch(searchTerm, error));
+        // console.error('axios error', error); // eslint-disable-line no-console
       });
   };
 }
