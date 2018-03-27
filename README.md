@@ -1,5 +1,5 @@
 # App Sparring
-
+[![Build Status](https://travis-ci.org/rodrigomilfont/appsparring.svg?branch=master)](https://travis-ci.org/rodrigomilfont/appsparring)
 * Install via yarn:
 
 ```bash
