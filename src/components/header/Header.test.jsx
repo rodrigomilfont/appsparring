@@ -1,30 +1,32 @@
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import sinon from 'sinon';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import store from '../../store';
+import { setSearchTerm } from '../../actionCreators';
 import Header from './Header';
 import HeaderSearch from '../../containers/header/HeaderSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it('renders without crashing', ()=> {
-  const wrapper = shallow(<Header/>);
+it('renders without crashing', () => {
+  const wrapper = shallow(<Header />);
   expect(wrapper).toMatchSnapshot();
 });
 
-it('change search term', ()=> {
-  const onSearchTermChange = sinon.spy();
-  const wrapper = shallow(<HeaderSearch onSearchTermChange={onSearchTermChange} />);
+it('change search term', () => {
+  const searchWord = 'New York';
+  store.dispatch(setSearchTerm(searchWord));
 
-  wrapper.find('input').simulate('change', { target: { value: "changed by test" } })
+  const wrapper = mount(
+    <Provider store={store}>
+      <MemoryRouter>
+        <HeaderSearch />
+      </MemoryRouter>
+    </Provider>,
+  );
 
-  expect(onSearchTermChange.calledOnce).toEqual(true);
+  // console.log(wrapper.debug());
+  expect(wrapper.find('input').props().value).toEqual(searchWord);
 });
-
-it('submit to history', ()=> {
-  const wrapper = shallow(<HeaderSearch />)
-  wrapper.setState({ searchTerm: "searchTermByTest" })
-  wrapper.find('form').simulate('submit', { preventDefault () {} })
-  //TODO Test history
-});
-
