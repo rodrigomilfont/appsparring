@@ -13,7 +13,8 @@ it('renders Home with footer', () => {
 
 it('example of debug use', () => {
   const wrapper = shallow(<Home />);
-  console.log(wrapper.find('.footer').debug());
+  // console.log(wrapper.find('.footer').debug());
+	expect(wrapper).toMatchSnapshot();
 });
 
 it('check if header component is instanced', () => {
