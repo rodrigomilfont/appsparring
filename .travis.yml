@@ -2,8 +2,15 @@ language: node_js
 cache: yarn
 node_js:
   - "8"
+addons:
+    code_climate:
+        repo_token: 389162f316bbcf31ba7ed4b476fe406373e351f756de608184b3b30a49e741cb
 install:
 - yarn
+before_script:
+- npm install codeclimate-test-reporter -g
+after_script:
+- codeclimate-test-reporter < ./coverage/lcov.info
 script:
 - yarn test -u
 - yarn test:coverage -u
