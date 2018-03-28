@@ -22,7 +22,7 @@ const Items = props => {
           <br />
           {/* // Super loading */}
           {isFetching && searchs.length === 0 && !error && <h2>Loading...</h2>}
-          {error && <h2>Search failed...try again! Msg: {errorMsg} </h2>}
+          {error && <h2 className="error" >Search failed...try again! Msg: {errorMsg} </h2>}
           {lastUpdate && (
             <span>
               Last updated at {new Date(lastUpdate).toLocaleTimeString()}
@@ -81,5 +81,7 @@ const mapStateToProps = state => {
     errorMsg,
   };
 };
+
+export const Unwrapped = Items
 
 export default connect(mapStateToProps)(Items);
