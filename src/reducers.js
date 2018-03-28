@@ -47,7 +47,9 @@ function searchs(
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action.results,
+        items: action.results
+          ? action.results.results.filter((el, index) => index <= 3)
+          : [],
         lastUpdate: action.receiveAt,
       });
 
