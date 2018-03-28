@@ -6,3 +6,4 @@ install:
 - yarn
 script:
 - yarn test -u
+- yarn test:coverage -u
