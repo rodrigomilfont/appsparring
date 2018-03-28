@@ -43,7 +43,7 @@ export function fetchSearch(searchTerm) {
     return axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
       .then(response => {
-        dispatch(receiveSearch(searchTerm, [response.data]));
+        dispatch(receiveSearch(searchTerm, response.data));
       })
       .catch(error => {
         dispatch(failedSearch(searchTerm, error));
