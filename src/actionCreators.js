@@ -40,14 +40,13 @@ export function failedSearch(searchTerm, error) {
 export function fetchSearch(searchTerm) {
   return dispatch => {
     dispatch(requestSearch(searchTerm));
-    axios
+    return axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
       .then(response => {
         dispatch(receiveSearch(searchTerm, [response.data]));
       })
       .catch(error => {
         dispatch(failedSearch(searchTerm, error));
-        // console.error('axios error', error); // eslint-disable-line no-console
       });
   };
 }
