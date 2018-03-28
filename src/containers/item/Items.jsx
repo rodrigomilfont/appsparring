@@ -21,7 +21,7 @@ const Items = props => {
           <Link to="/">Home</Link>
           <br />
           {/* // Super loading */}
-          {isFetching && searchs.length === 0 && !error && <h2>Loading...</h2>}
+          {isFetching && searchs.length === 0 && !error && <h2 className="loading" >Loading...</h2>}
           {error && <h2 className="error" >Search failed...try again! Msg: {errorMsg} </h2>}
           {lastUpdate && (
             <span>

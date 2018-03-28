@@ -4,21 +4,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
-import { setSearchTerm, fetchSearch, failedSearch } from '../../actionCreators';
-import Items,  { Unwrapped as UnwrappedItems } from '../../containers/item/Items'
+import {
+  setSearchTerm,
+  failedSearch,
+  requestSearch,
+} from '../../actionCreators';
+import Items, {
+  Unwrapped as UnwrappedItems,
+} from '../../containers/item/Items';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it('renders without crashing', () => {
-  const wrapper = shallow(<UnwrappedItems />);
-  expect(wrapper).toMatchSnapshot();
-});
-
-it('change search term', () => {
-  const searchTerm = 'Goku';
-  store.dispatch(setSearchTerm(searchTerm));
-  store.dispatch(failedSearch(searchTerm, "ERROR"));
-
+function setup() {
   const wrapper = mount(
     <Provider store={store}>
       <MemoryRouter>
@@ -26,8 +23,40 @@ it('change search term', () => {
       </MemoryRouter>
     </Provider>,
   );
+  return {
+    wrapper,
+  };
+}
 
-  // console.log(wrapper.debug());
-  expect(wrapper.find('input').props().value).toEqual(searchTerm);
-  expect(wrapper.find('.error').length).toEqual(1);
+describe('Unwrapped', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<UnwrappedItems />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('Connected Items', () => {
+  const searchTerm = 'Goku';
+
+  it('change search term', () => {
+    store.dispatch(setSearchTerm(searchTerm));
+
+    const { wrapper } = setup();
+    expect(wrapper.find('input').props().value).toEqual(searchTerm);
+  });
+
+  it('failedSearch test', () => {
+    store.dispatch(failedSearch(searchTerm, 'ERROR'));
+
+    const { wrapper } = setup();
+    expect(wrapper.find('.error').length).toEqual(1);
+  });
+
+  // #bug mount enzyme https://github.com/airbnb/enzyme/issues/1229
+  // xit('requestSearch test', () => {
+  //   store.dispatch(requestSearch(searchTerm));
+  //   const { wrapper } = setup();
+  //
+  //   expect(wrapper.find('.loading').length).toEqual(1);
+  // });
 });
