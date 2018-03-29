@@ -1,7 +1,5 @@
 import reducers from './reducers';
 
-console.log('reducers: ', reducers);
-
 test('SET_SEARCH_TERM', () => {
   const state = reducers(
     {
@@ -35,7 +33,7 @@ test('FAILED_SEARCH', () => {
   expect(state).toEqual({
     searchTerm: 'yo',
     resultBySearchTerm: {
-      yo: { isFetching: false, didInvalidate: true, items: [] },
+      yo: { isFetching: true, didInvalidate: true, items: [] },
     },
     failedSearch: { error: true, errorMsg: 'error' },
   });
