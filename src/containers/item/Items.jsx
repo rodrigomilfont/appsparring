@@ -88,10 +88,5 @@ const mapStateToProps = state => {
   };
 };
 
-<<<<<<< HEAD
 export const Unwrapped = Items;
-=======
-export const Unwrapped = Items
->>>>>>> 115d955e1769b7ef3d92e3e17d715a3d93cf11e8
-
 export default connect(mapStateToProps)(Items);
