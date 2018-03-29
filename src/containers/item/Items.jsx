@@ -21,8 +21,14 @@ const Items = props => {
           <Link to="/">Home</Link>
           <br />
           {/* // Super loading */}
-          {isFetching && searchs.length === 0 && !error && <h2 className="loading" >Loading...</h2>}
-          {error && <h2 className="error" >Search failed...try again! Msg: {errorMsg} </h2>}
+          {isFetching &&
+            searchs.length === 0 &&
+            !error && <h2 className="loading">Loading...</h2>}
+          {error && (
+            <h2 className="error">
+              Search failed...try again! Msg: {errorMsg}{' '}
+            </h2>
+          )}
           {lastUpdate && (
             <span>
               Last updated at {new Date(lastUpdate).toLocaleTimeString()}
@@ -82,6 +88,6 @@ const mapStateToProps = state => {
   };
 };
 
-export const Unwrapped = Items
+export const Unwrapped = Items;
 
 export default connect(mapStateToProps)(Items);
