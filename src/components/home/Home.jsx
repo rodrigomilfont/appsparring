@@ -9,20 +9,22 @@ const Home = props => (
     <Header {...props} />
     <aside className="sidebar-left">
       <article>
-        <h4>
-          <Link to="/items">Items</Link>
-        </h4>
-        <h1>Home - Home.jsx</h1>
+        <ul>
+          <li>
+            <Link to="/items">Miercado Libre</Link>
+          </li>
+          <li>
+            <Link to="/items">Miercado Libre</Link>
+          </li>
+        </ul>
       </article>
     </aside>
     <main className="content">
       <img src={donaGata} alt="" />
-      <img src={Felix} alt="Felix" width="200" />
       <article>
-        <pre>
-          <code>{JSON.stringify(props, null, 4)}</code>
-        </pre>
+        <h1>Home</h1>
       </article>
+      <img src={Felix} alt="Felix" width="200" />
     </main>
     <aside className="sidebar-rigth">
       <p>

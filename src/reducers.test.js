@@ -19,6 +19,26 @@ test('SET_SEARCH_TERM', () => {
   });
 });
 
+test('FAILED_SEARCH', () => {
+  const state = reducers(
+    {
+      searchTerm: 'yo',
+      resultBySearchTerm: {
+        yo: { isFetching: true, didInvalidate: true, items: [] },
+      },
+      failedSearch: false,
+    },
+    { type: 'FAILED_SEARCH', searchTerm: 'yo', error: 'error' },
+  );
+  expect(state).toEqual({
+    searchTerm: 'yo',
+    resultBySearchTerm: {
+      yo: { isFetching: true, didInvalidate: true, items: [] },
+    },
+    failedSearch: { error: true, errorMsg: 'error' },
+  });
+});
+
 test('REQUEST_SEARCH ', () => {
   const state = reducers(
     { searchTerm: 'boca juniors', resultBySearchTerm: [], failedSearch: false },

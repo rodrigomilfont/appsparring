@@ -24,6 +24,6 @@ yarn-error.log*
 
 *.orig
 
-__snapshots__
+# __snapshots__
 
 *.swn

@@ -1,18 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import HeaderSearch from '../../containers/header/HeaderSearch';
 import './index.css';
-import Felix from './felix_the_cat.svg';
 
-const Header = props => (
-  <header className="header">
-    <div className="box-logo">
-      <Link to="/">
-        <img src={Felix} alt="Felix" width="35" />
-      </Link>
-    </div>
-    <HeaderSearch {...props} />
-  </header>
-);
+const Header = props => {
+  const { showSearch } = props;
+  return (
+    <header className="header">
+      <div className="box-logo">
+        <Link to="/"> Logo </Link>
+      </div>
+      {showSearch && <HeaderSearch {...props} />}
+    </header>
+  );
+};
+
+Header.propTypes = {
+  showSearch: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  showSearch: false,
+};
 
 export default Header;

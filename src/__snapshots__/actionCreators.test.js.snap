@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetchSearch searchTerm 1`] = `[Function]`;
+
+exports[`setSearchTerm 1`] = `
+Object {
+  "payload": "DonaGata",
+  "type": "SET_SEARCH_TERM",
+}
+`;

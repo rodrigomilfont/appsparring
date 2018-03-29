@@ -27,5 +27,6 @@
   display: block;
   height: 35px;
   text-indent: -9000px;
+  direction: ltr;
   width: 35px;
 }
