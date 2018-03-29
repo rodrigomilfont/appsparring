@@ -1,5 +1,6 @@
 # App Sparring
 
+=======
 [![Build Status](https://travis-ci.org/rodrigomilfont/appsparring.svg?branch=master)](https://travis-ci.org/rodrigomilfont/appsparring) [![Maintainability](https://api.codeclimate.com/v1/badges/3597bbbbffe8f88c5269/maintainability)](https://codeclimate.com/github/rodrigomilfont/appsparring/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/3597bbbbffe8f88c5269/test_coverage)](https://codeclimate.com/github/rodrigomilfont/appsparring/test_coverage)
 
 * Install via yarn:
