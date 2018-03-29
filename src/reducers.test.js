@@ -1,5 +1,7 @@
 import reducers from './reducers';
 
+console.log('reducers: ', reducers);
+
 test('SET_SEARCH_TERM', () => {
   const state = reducers(
     {
@@ -16,6 +18,26 @@ test('SET_SEARCH_TERM', () => {
     searchTerm: 'boca juniors',
     resultBySearchTerm: [],
     failedSearch: false,
+  });
+});
+
+test('FAILED_SEARCH', () => {
+  const state = reducers(
+    {
+      searchTerm: 'yo',
+      resultBySearchTerm: {
+        yo: { isFetching: true, didInvalidate: true, items: [] },
+      },
+      failedSearch: false,
+    },
+    { type: 'FAILED_SEARCH', searchTerm: 'yo', error: 'error' },
+  );
+  expect(state).toEqual({
+    searchTerm: 'yo',
+    resultBySearchTerm: {
+      yo: { isFetching: false, didInvalidate: true, items: [] },
+    },
+    failedSearch: { error: true, errorMsg: 'error' },
   });
 });
 
