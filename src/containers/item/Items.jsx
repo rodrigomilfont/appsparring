@@ -15,7 +15,7 @@ const Items = props => {
   } = props;
   return (
     <div className="grid">
-      <Header />
+      <Header showSearch {...props} />
       <main className="content">
         <article>
           <Link to="/">Home</Link>
