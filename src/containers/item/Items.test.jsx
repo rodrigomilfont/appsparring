@@ -7,7 +7,6 @@ import store from '../../store';
 import {
   setSearchTerm,
   failedSearch,
-  requestSearch,
 } from '../../actionCreators';
 import Items, {
   Unwrapped as UnwrappedItems,
