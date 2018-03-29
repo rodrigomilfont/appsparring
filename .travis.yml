@@ -8,9 +8,10 @@ addons:
 install:
 - yarn
 before_script:
-- npm install codeclimate-test-reporter -g
+- npm install codeclimate-test-reporter codecov -g
 after_script:
 - codeclimate-test-reporter < ./coverage/lcov.info
 script:
 - yarn test -u
 - yarn test:coverage -u
+- codecov
