@@ -5,8 +5,8 @@ header.header {
 
 .box-logo a {
   align-items: center;
-  background-size: 35px 35px;
   background: url('./felix_the_cat.svg') 0 0 no-repeat transparent;
+  background-size: 35px 35px;
   direction: ltr;
   display: flex;
   height: 35px;
