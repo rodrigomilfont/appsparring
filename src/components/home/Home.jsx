@@ -9,7 +9,7 @@ import './index.css';
 const Home = props => (
   <div className="grid">
     <Header {...props} />
-		<Menu />
+    <Menu />
     <main className="content">
       <article>
         <h1>Home</h1>
