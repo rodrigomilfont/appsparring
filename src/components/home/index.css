@@ -1,0 +1,20 @@
+.sidebar-left {
+  padding: 0 15px;
+}
+
+.sidebar-left ul {
+  display: block;
+  padding: 0;
+}
+
+.sidebar-left li {
+  list-style: none;
+}
+
+.sidebar-left li a {
+  color: #000;
+  display: block;
+  font-size: 14px;
+  line-height: 25px;
+  text-decoration: none;
+}
