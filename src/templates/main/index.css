@@ -34,8 +34,8 @@ header {
 
 footer {
   background: #000;
-  text-align: center;
   color: #fff;
+  text-align: center;
 }
 
 @media all and (max-width: 700px) {
