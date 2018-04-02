@@ -37,15 +37,8 @@ ShallowWrapper {
         <main
           className="content"
         >
-          <article>
-            <Link
-              replace={false}
-              to="/"
-            >
-              Home
-            </Link>
-            <br />
-          </article>
+          <Menu />
+          <article />
         </main>,
       ],
       "className": "grid",
@@ -74,68 +67,45 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <article>
-            <Link
-              replace={false}
-              to="/"
-            >
-              Home
-            </Link>
-            <br />
-          </article>,
+          "children": Array [
+            <Menu />,
+            <article />,
+          ],
           "className": "content",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Link
-                replace={false}
-                to="/"
-              >
-                Home
-              </Link>,
-              <br />,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                false,
+                false,
+                null,
+                false,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
               false,
               false,
               null,
               false,
             ],
+            "type": "article",
           },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "Home",
-                "replace": false,
-                "to": "/",
-              },
-              "ref": null,
-              "rendered": "Home",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": "br",
-            },
-            false,
-            false,
-            null,
-            false,
-          ],
-          "type": "article",
-        },
+        ],
         "type": "main",
       },
     ],
@@ -160,15 +130,8 @@ ShallowWrapper {
           <main
             className="content"
           >
-            <article>
-              <Link
-                replace={false}
-                to="/"
-              >
-                Home
-              </Link>
-              <br />
-            </article>
+            <Menu />
+            <article />
           </main>,
         ],
         "className": "grid",
@@ -197,68 +160,45 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <article>
-              <Link
-                replace={false}
-                to="/"
-              >
-                Home
-              </Link>
-              <br />
-            </article>,
+            "children": Array [
+              <Menu />,
+              <article />,
+            ],
             "className": "content",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <Link
-                  replace={false}
-                  to="/"
-                >
-                  Home
-                </Link>,
-                <br />,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  false,
+                  false,
+                  null,
+                  false,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
                 false,
                 false,
                 null,
                 false,
               ],
+              "type": "article",
             },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Home",
-                  "replace": false,
-                  "to": "/",
-                },
-                "ref": null,
-                "rendered": "Home",
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": "br",
-              },
-              false,
-              false,
-              null,
-              false,
-            ],
-            "type": "article",
-          },
+          ],
           "type": "main",
         },
       ],
