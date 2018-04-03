@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SearchItens = props => {
-  console.log('props: ', props);
   const { searchs } = props;
   return (
     <ul>
