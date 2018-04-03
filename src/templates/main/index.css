@@ -19,7 +19,6 @@ aside,
 main,
 footer {
   background: #fff;
-  /* border: 1px solid red; */
 }
 
 header,
@@ -31,11 +30,12 @@ header {
   align-items: center;
   display: grid;
   grid-template-columns: 72px repeat(1, 1fr);
-  /* justify-content: center; */
 }
 
 footer {
-  background: #ccc;
+  background: #000;
+  color: #fff;
+  text-align: center;
 }
 
 @media all and (max-width: 700px) {

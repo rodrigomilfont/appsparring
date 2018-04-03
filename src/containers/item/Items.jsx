@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
+import Menu from '../../components/menu/Menu';
+import SearchItens from '../../components/searchitens/SearchItens';
 
 const Items = props => {
   const {
@@ -17,9 +18,8 @@ const Items = props => {
     <div className="grid">
       <Header showSearch {...props} />
       <main className="content">
+        <Menu />
         <article>
-          <Link to="/">Home</Link>
-          <br />
           {/* // Super loading */}
           {isFetching &&
             searchs.length === 0 &&
@@ -37,6 +37,7 @@ const Items = props => {
           {searchs.length !== 0 && (
             <div>
               <h2>Search Term Items : {searchTerm}</h2>
+              <SearchItens {...props} />
               <pre>
                 <code>{JSON.stringify(searchs, null, 4)}</code>
               </pre>
