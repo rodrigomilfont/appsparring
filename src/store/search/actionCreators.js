@@ -41,6 +41,7 @@ export function fetchSearch(searchTerm) {
     dispatch(requestSearch(searchTerm));
     return api
       .fetchSearch(searchTerm)
+      .then(api.checkStatus)
       .then(response => {
         dispatch(receiveSearch(searchTerm, response.data));
       })
