@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.css';
-import { setSearchTerm, fetchSearch } from '../../actionCreators';
+import { setSearchTerm, fetchSearch } from '../../store/search/actionCreators';
 
 class HeaderSearch extends React.Component {
   constructor(props) {
@@ -57,7 +57,7 @@ HeaderSearch.defaultProps = {
 };
 
 const mapStateToProps = state => {
-  const { searchTerm } = state;
+  const { searchTerm } = state.search;
   return {
     searchTerm,
   };

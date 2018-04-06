@@ -68,7 +68,7 @@ Items.defaultProps = {
 };
 
 const mapStateToProps = state => {
-  const { searchTerm, resultBySearchTerm, failedSearch } = state;
+  const { searchTerm, resultBySearchTerm, failedSearch } = state.search;
 
   const { error, errorMsg } = failedSearch || { error: false, errorMsg: '' };
 

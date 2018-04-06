@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
-import { setSearchTerm, failedSearch } from '../../actionCreators';
+import { setSearchTerm, failedSearch } from '../../store/search/actionCreators';
 import Items, {
   Unwrapped as UnwrappedItems,
 } from '../../containers/item/Items';

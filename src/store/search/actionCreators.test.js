@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import { setSearchTerm, requestSearch, fetchSearch } from './actionCreators';
 import * as actions from './actions';
-import * as api from './api';
+import * as api from './endpoint';
 
 const middlewares = [thunk.withExtraArgument(api)];
 // const middlewares = [thunk];
