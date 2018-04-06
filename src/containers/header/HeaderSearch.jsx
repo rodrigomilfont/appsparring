@@ -72,6 +72,8 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+export const Unwrapped = HeaderSearch;
+
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(HeaderSearch),
 );
