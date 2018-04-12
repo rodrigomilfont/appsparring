@@ -41,3 +41,15 @@ describe('Connected HeaderSearch', () => {
     expect(wrapper.find('input').props().value).toEqual(searchTerm);
   });
 });
+
+describe('Change events', () => {
+  const fakeEvents = jest.fn();
+  const wrapper = shallow(
+    <UnwrappedHeaderSearch handleSearchTermChange={fakeEvents} />,
+  );
+
+  wrapper.find('input').simulate('change');
+  console.log('fakeEvents: ', fakeEvents.mock.calls);
+  // console.log(wrapper.debug());
+  console.log('wrapper.props(): ', wrapper.find('input').props());
+});

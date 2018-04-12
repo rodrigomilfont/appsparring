@@ -46,7 +46,7 @@ ShallowWrapper {
           Buscar
         </Link>,
       ],
-      "className": "box-search",
+      "className": "box-search-header",
     },
     "ref": null,
     "rendered": Array [
@@ -125,7 +125,7 @@ ShallowWrapper {
             Buscar
           </Link>,
         ],
-        "className": "box-search",
+        "className": "box-search-header",
       },
       "ref": null,
       "rendered": Array [

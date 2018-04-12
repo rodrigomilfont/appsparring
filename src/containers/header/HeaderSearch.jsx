@@ -18,7 +18,7 @@ class HeaderSearch extends React.Component {
 
   render() {
     return (
-      <div className="box-search">
+      <div className="box-search-header">
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.props.handleSearchTermChange}
