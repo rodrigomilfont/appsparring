@@ -56,7 +56,7 @@ test('REQUEST_SEARCH ', () => {
 test('RECEIVE_SEARCH ', () => {
   const state = reducers(
     {
-      searchTerm: 'boca juniors',
+      searchTerm: 'boca juniors receive search',
       resultBySearchTerm: [],
       failedSearch: false,
     },
