@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
-import { setSearchTerm, failedSearch } from '../../store/search/actionCreators';
+import { setSearchTerm } from '../../store/search/actionCreators';
 import HeaderSearch, {
   Unwrapped as UnwrappedHeaderSearch,
 } from '../../containers/header/HeaderSearch';
@@ -49,7 +49,7 @@ describe('Change events', () => {
   );
 
   wrapper.find('input').simulate('change');
-  console.log('fakeEvents: ', fakeEvents.mock.calls);
+  // console.log('fakeEvents: ', fakeEvents.mock.calls);
   // console.log(wrapper.debug());
-  console.log('wrapper.props(): ', wrapper.find('input').props());
+  // console.log('wrapper.props(): ', wrapper.find('input').props());
 });
