@@ -21,6 +21,11 @@ Commands
 docker-compose run --rm web yarn COMMAND
 ```
 
+Start
+``` bash
+docker-compose up
+```
+
 * Install via yarn:
 
 ```bash
