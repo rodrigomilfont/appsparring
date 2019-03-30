@@ -1,13 +1,13 @@
-.box-search {
+.box-search-header {
   display: flex;
   flex-direction: row;
 }
 
-.box-search form {
+.box-search-header form {
   flex: auto;
 }
 
-.box-search input {
+.box-search-header input {
   border-radius: 3px 0 0 3px;
   border: 1px solid #eee;
   flex: auto;
@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-.box-search input:focus {
+.box-search-header input:focus {
   outline: none;
 }
 
@@ -24,9 +24,9 @@
   background: url('./ic_Search.png') 9px 9px no-repeat #eee;
   border-radius: 0 3px 3px 0;
   border: 1px solid #eee;
+  direction: ltr;
   display: block;
   height: 35px;
   text-indent: -9000px;
-  direction: ltr;
   width: 35px;
 }

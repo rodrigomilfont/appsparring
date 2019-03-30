@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './index.css';
 import { setSearchTerm, fetchSearch } from '../../store/search/actionCreators';
+import './index.css';
 
 class HeaderSearch extends React.Component {
   constructor(props) {
