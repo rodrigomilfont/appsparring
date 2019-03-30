@@ -1,0 +1,35 @@
+version: '3.6'
+services:
+  web:
+    image: appsparring
+    build:
+      context: .
+    container_name: appsparring-web
+    user: appsparring
+    hostname: appsparring
+    volumes:
+      - .:/appsparring
+      - node_modules:/node_modules
+      - ~/.ssh:/appsparring/.ssh
+    ports:
+      - '8080:8080'
+    command: yarn dev
+    environment:
+      - NODE_MODULES_PATH=/node_modules
+      - NODE_ENV=development
+    depends_on:
+      - node_modules
+
+  node_modules:
+    image: busybox:latest
+    container_name: appsparring-node-modules
+    volumes:
+      - /node_modules
+
+networks:
+  default:
+    driver: bridge
+    name: appsparring
+
+volumes:
+  node_modules:

@@ -1,0 +1,12 @@
+FROM node:9.9-alpine
+
+ENV APP_PATH /appsparring
+
+WORKDIR $APP_PATH
+
+COPY package.json $APP_PATH
+COPY yarn.lock $APP_PATH
+
+RUN yarn --modules-folder /node_modules
+
+COPY . $APP_PATH
