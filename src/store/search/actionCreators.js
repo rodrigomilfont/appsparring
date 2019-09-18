@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   SET_SEARCH_TERM,
   REQUEST_SEARCH,
@@ -38,10 +37,11 @@ export function failedSearch(searchTerm, error) {
 }
 
 export function fetchSearch(searchTerm) {
-  return dispatch => {
+  return (dispatch, getState, api) => {
     dispatch(requestSearch(searchTerm));
-    return axios
-      .get(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`)
+    return api
+      .fetchSearch(searchTerm)
+      .then(api.checkStatus)
       .then(response => {
         dispatch(receiveSearch(searchTerm, response.data));
       })

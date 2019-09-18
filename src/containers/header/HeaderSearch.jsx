@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setSearchTerm, fetchSearch } from '../../store/search/actionCreators';
 import './index.css';
-import { setSearchTerm, fetchSearch } from '../../actionCreators';
 
 class HeaderSearch extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class HeaderSearch extends React.Component {
 
   render() {
     return (
-      <div className="box-search">
+      <div className="box-search-header">
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.props.handleSearchTermChange}
@@ -57,7 +57,7 @@ HeaderSearch.defaultProps = {
 };
 
 const mapStateToProps = state => {
-  const { searchTerm } = state;
+  const { searchTerm } = state.search;
   return {
     searchTerm,
   };
@@ -71,6 +71,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchSearch(searchTerm));
   },
 });
+
+export const Unwrapped = HeaderSearch;
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(HeaderSearch),

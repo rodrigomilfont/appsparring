@@ -77,10 +77,10 @@ function resultBySearchTerm(state = [], action) {
   }
 }
 
-const rootReducer = combineReducers({
+const search = combineReducers({
   searchTerm,
   resultBySearchTerm,
   failedSearch,
 });
 
-export default rootReducer;
+export default search;

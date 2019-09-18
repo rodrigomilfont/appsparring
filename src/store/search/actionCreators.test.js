@@ -3,8 +3,10 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import { setSearchTerm, requestSearch, fetchSearch } from './actionCreators';
 import * as actions from './actions';
+import * as api from './endpoint';
 
-const middlewares = [thunk];
+const middlewares = [thunk.withExtraArgument(api)];
+// const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const searchTerm = 'DonaGata';
 
@@ -14,31 +16,6 @@ it('setSearchTerm', () => {
 
 it('fetchSearch searchTerm', () => {
   expect(fetchSearch(searchTerm)).toMatchSnapshot();
-});
-
-describe('fetchSearch action', () => {
-  it('check the url in fetchSearch', done => {
-    const dispatchMock = jest.fn();
-    moxios.withMock(() => {
-      requestSearch(searchTerm);
-      fetchSearch(searchTerm)(dispatchMock);
-      moxios.wait(() => {
-        const request = moxios.requests.mostRecent();
-        request
-          .respondWith({
-            status: 200,
-            response: 'response',
-          })
-          .then(() => {
-            expect(request.url).toEqual(
-              `https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`,
-            );
-            expect(dispatchMock).toBeCalledWith(requestSearch(searchTerm));
-            done();
-          });
-      });
-    });
-  });
 });
 
 describe('getPosts actions', () => {
@@ -72,5 +49,37 @@ describe('getPosts actions', () => {
     });
 
     done();
+  });
+});
+
+describe('fetchSearch action', () => {
+  beforeEach(() => {
+    moxios.install();
+  });
+
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  it('check the url in fetchSearch', done => {
+    const dispatchMock = jest.fn();
+    moxios.withMock(() => {
+      api.fetchSearch(searchTerm);
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        request
+          .respondWith({
+            status: 200,
+            response: 'response',
+          })
+          .then(() => {
+            expect(request.url).toEqual(
+              `https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`,
+            );
+            expect(dispatchMock).toBeCalledWith(requestSearch(searchTerm));
+          });
+        done();
+      });
+    });
   });
 });

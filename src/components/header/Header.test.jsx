@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
-import { setSearchTerm } from '../../actionCreators';
+import { setSearchTerm } from '../../store/search/actionCreators';
 import Header from './Header';
 import HeaderSearch from '../../containers/header/HeaderSearch';
 
